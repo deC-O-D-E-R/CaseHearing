@@ -29,11 +29,11 @@ const userSchema = {
     gender: String,
     age: Number
 };
-
+let loggedIn = false;
 const User = mongoose.model("Clients", userSchema);
 
 app.get("/", (req, res) => {
-    res.render("home.ejs");
+    res.render("home.ejs", {loggedIn:loggedIn});
 });
 
 app.get("/register", (req, res) => {
@@ -87,9 +87,9 @@ app.post("/register", (req,res) => {
 
 
 
-app.get("/login", (req, res) => {
-    const login_mail = req.query.loginId;
-    const login_pass = req.query.loginPassword;
+app.post("/login", (req, res) => {
+    const login_mail = req.body.loginId;
+    const login_pass = req.body.loginPassword;
 
     User.findOne({ email: login_mail, password: login_pass })
         .then(user => {
@@ -100,19 +100,21 @@ app.get("/login", (req, res) => {
                         if (caseDetails.length > 0) {
                             req.session.user = { email: user.email, name: user.name, age: user.age };
                             req.session.cases = caseDetails;
+                            loggedIn = true;
                             res.redirect('/dashboard');
                         } else {
                             nodeNotifier.notify('No case filed yet!');
-                            res.redirect('/');
+                            loggedIn = true;
+                            res.status(200).json({message:'Logged In'});
                         }
                     })
                     .catch(error => {
                         console.error("Error finding case details:", error);
-                        res.status(500).send("Internal Server Error");
+                        res.status(500).json("Internal Server Error");
                     });
             } else {
                 nodeNotifier.notify('Invalid credentials!');
-                res.redirect('/');
+                res.status(401).json('Not Varified user');
             }
         })
         .catch(error => {
@@ -140,6 +142,7 @@ app.get("/logout", (req, res) => {
             console.error("Error destroying session:", err);
             res.status(500).send("Internal Server Error");
         } else {
+            loggedIn = false;
             nodeNotifier.notify('Logged Out!');
             res.redirect('/');
         }

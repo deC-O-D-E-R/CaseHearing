@@ -21,13 +21,11 @@ body {
 }
 
 .navbar {
-    background-color: #5e99ca;
+    background-color: #154063;
     color: black;
     padding: 20px 0;
-    margin: 2px 0px 2px 0px;
-    border-radius: 20px; 
+    margin: 0px 0px 2px 0px; 
     outline: none; 
-    height: 90px;
 }
 
 
@@ -39,6 +37,8 @@ body {
 
 .navbar .logo {
     font-size: 34px;
+    color: white;
+    font-weight: 400;
 }
 
 .nav-links {
@@ -53,7 +53,7 @@ body {
 }
 
 .nav-links li a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -131,6 +131,7 @@ body {
     font-size: 45px;
     margin-bottom: 20px;
     margin-bottom: 50px;
+    font-weight: 600;
     text-align: left;
 }
 
@@ -168,43 +169,34 @@ body {
 .main {
     width: 100%;
     margin-top: 3px;
-    background-color: rgb(227, 227, 205);
+    /* background-color: rgb(227, 227, 205); */
     border-radius: 30px;
 }
 
 .boxes {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     padding: 1rem;
     width: 100%;
 }
-
-.firstTwo {
-    display: flex;
-    justify-content: center;
-}
-
-.lastTwo {
-    display: flex;
-    justify-content: center;
-}
-
 .box {
     margin: 2rem;
+    width: 260px;
     border: 2px solid black;
     display: flex;
     justify-content: center;
+    border: none;
     align-items: end;
+    padding: 1rem;
     padding-bottom: 1rem;
+    box-shadow: 3px 3px 3px lightblue;
 }
 
 #box1 {
-    width: 100%;
     background-color: #a8cfca;
     border-radius: .4rem;
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -212,11 +204,9 @@ body {
 }
 
 #box2 {
-    width: 100%;
-    background-color: lightyellow;
+    background-color:  #a8cfca;
     border-radius: .4rem;
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -224,11 +214,9 @@ body {
 }
 
 #box3 {
-    width: 100%;
-    background-color: rgb(189, 130, 130);
+    background-color:  #a8cfca;
     border-radius: .4rem;
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -236,11 +224,9 @@ body {
 }
 
 #box4 {
-    width: 100%;
-    background-color: rgb(250, 159, 55);
+    background-color:  #a8cfca;
     border-radius: .4rem;
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

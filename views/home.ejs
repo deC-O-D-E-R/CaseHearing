@@ -16,7 +16,9 @@
                 <li><a href="/">Home</a></li>
                 <li id="dashboardLink" style="display: none;"><a href="/dashboard">Dashboard</a></li>
                 <li><a href="/aboutUs">AboutUs</a></li>
+                <% if (loggedIn) { %>
                 <button href="/logout" id="logout" style="display: none; background-color: red; font-size: large; border-radius: 6px; padding: 2px; font-weight: bold; font-size: 15px; ">Logout</button> 
+                <%} %>
             </ul>
         </div>
     </nav>
@@ -54,28 +56,23 @@
             
 
         <div class="boxes">
-            <div class="firstTwo">
-
                 <div class="box" id="box1">
                     <p>32124</p>
-                    Total Cases</div>
+                    <span>Total Cases</span>
+                </div>
                 <div class="box" id="box2">
                     <p>1234</p>
-                    Decided</div>
-
-            </div>
-            
-            <div class="lastTwo">
-
-
+                    <span>Decided</span>
+                </div>
                 <div class="box" id="box3">
                     <p>1324</p>
-                    Pending</div>
+                    <span>Pending</span>
+                </div>
                 <div class="box" id="box4">
                     <p>400</p>
-                    In trial Queue</div>
-            </div>
-            </div>
+                    <span>In trial Queue</span>
+                </div>
+        </div>
             
         <div class="resultBox">
             <div class="result" id="boxA" >

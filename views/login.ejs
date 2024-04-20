@@ -97,28 +97,47 @@
     <div class="container">
         <h1>Login</h1>
         <div class="sub-con">
-            <form action="/login" method="get">
+            <form id="loginForm" action="/login" method="post">
                 <div class="log-email">
-                    <label for="email" id="email">Email:</label>
-                    <input type="email" name="loginId" id="email" >
+                    <label for="email">Email:</label>
+                    <input type="email" name="loginId" id="email">
                 </div>
                 <div class="log-password">
-                    <label for="password" id="password">Password:</label>
-                    <input type="password" name="loginPassword" id="password" >
+                    <label for="password">Password:</label>
+                    <input type="password" name="loginPassword" id="password">
                 </div>
                 <div class="login">
-                    <button id="loginBtn">Login</button>
+                    <button type="submit" id="loginBtn">Login</button>
                 </div>
             </form>
         </div>
     </div>
-</body>
 
-<script>
-    // document.getElementById('loginBtn').addEventListener('click', function(event) {
-    //     event.preventDefault(); 
-    //     window.location.href = "/";
-    // });
-</script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            var formData = new FormData(this);
+
+            fetch("/login", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error("Network response was not ok.");
+            })
+            .then(data => {
+                // Handle your response here
+                console.log(data); // For example, you can log the response to the console
+            })
+            .catch(error => {
+                console.error("There has been a problem with your fetch operation:", error);
+            });
+        });
+    </script>
+</body>
 
 </html>
