@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            padding: 15px;
+            text-align: left;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 24px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: black; 
+        }
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sub-con {
+            width: 50%;
+            min-height: 450px;
+            background-color: #5e99ca;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            padding: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            color: #555;
+        }
+        .form-group input {
+            width: 200px;
+            margin-left: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 12px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            color: white;
+            background-color: green;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: white;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Back</a>
+    </div>
+    <div class="container">
+        <h1>Register</h1>
+        <div class="sub-con">
+            <form action="/register" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="input_name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="input_email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="input_password">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <input type="text" id="gender" name="input_gender">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="text" id="age" name="input_age">
+                </div>
+                <div class="submit">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

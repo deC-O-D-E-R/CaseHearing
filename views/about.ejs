@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; 
+    color: #333; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: #5e99ca;
+    color: black;
+    padding: 10px 0;
+    border-radius: 15px;
+    margin-bottom: 20px; 
+    font-size: 21px;
+    
+}
+
+header h1 {
+    margin: 0;
+    text-align: center; 
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center; 
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.about-section, .team-section {
+    margin-bottom: 40px; 
+}
+
+.about-section {
+    padding: 50px 20px; 
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about-section p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.team-section {
+    background-color: #7fdbda;
+    padding: 50px 20px; 
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.team-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    flex: 0 0 calc(33.333% - 40px);
+    margin: 20px;
+    text-align: center;
+}
+
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.team-member h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.team-member p {
+    font-size: 18px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 15px;
+    margin-top: 40px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+</style>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="about-section">
+    <div class="container">
+        <h2>About Us</h2>
+        <hr> 
+        <p>We are dedicated to revolutionizing the way case management hearings are conducted. Our e-portal is designed to streamline and facilitate the handling of various types of cases, making the process more efficient, transparent, and accessible.</p>
+        <p>At our core, we are committed to providing a user-friendly platform that empowers legal professionals, court officials, and litigants to manage cases effectively from anywhere, at any time.</p>
+        <p>Our team of experienced developers and legal experts has worked tirelessly to create a comprehensive solution tailored to the needs of modern legal practices. With advanced features and intuitive design, our e-portal simplifies case management tasks, allowing users to focus on what matters most - delivering justice.</p>
+    </div>
+</section>
+
+<section class="team-section">
+    <div class="container">
+        <h2>Meet Our Team</h2>
+        <hr> 
+        <div class="team-members">
+            <div class="team-member">
+                <img src="\dp.jpg.png" alt="Mike Johnson">
+                <h3>Mohd Saif</h3>
+                <p>Project Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="\dp.jpg.png" alt="Mike Johnson">
+                <h3>Mohd Hamd</h3>
+                <p>Network Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="\dp.jpg.png" alt="Mike Johnson">
+                <h3>Shahbaz Khan</h3>
+                <p>Idea Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="\dp.jpg.png" alt="John Doe">
+                <h3>Mohd Qasim</h3>
+                <p>Lead Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="\dp.jpg.png" alt="Jane Smith">
+                <h3>Mohd Shakir</h3>
+                <p>Legal Consultant</p>
+            </div>
+            <div class="team-member">
+                <img src="\dp.jpg.png" alt="Mike Johnson">
+                <h3>Rehan</h3>
+                <p>Content Manager</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 CrimeConnect. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

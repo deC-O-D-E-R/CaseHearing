@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #333; /* Sky blue */
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: black; /* Light Sea Green */
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: linen;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sub-con {
+            padding-left: 20px;
+            width: 30%;
+            height: 70%;
+            background-color: #5e99ca;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            box-shadow: 2px 2px 2px black;
+        }
+        h1 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .log-email, .log-password {
+            padding: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        input {
+            border-radius: 10px;
+            font-size: 20px;
+            margin-top: 5px;
+            border: none;
+            padding: 8px 12px;
+            width: 100%;
+        }
+        button {
+            margin-left: 10px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            color: white;
+            background-color: green;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: white;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Back</a>
+    </div>
+    <div class="container">
+        <h1>Login</h1>
+        <div class="sub-con">
+            <form action="/login" method="get">
+                <div class="log-email">
+                    <label for="email" id="email">Email:</label>
+                    <input type="email" name="loginId" id="email" >
+                </div>
+                <div class="log-password">
+                    <label for="password" id="password">Password:</label>
+                    <input type="password" name="loginPassword" id="password" >
+                </div>
+                <div class="login">
+                    <button id="loginBtn">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>
+    // document.getElementById('loginBtn').addEventListener('click', function(event) {
+    //     event.preventDefault(); 
+    //     window.location.href = "/";
+    // });
+</script>
+
+</html>

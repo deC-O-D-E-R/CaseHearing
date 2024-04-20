@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Management Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .nav {
+            background-color: #333;
+            padding: 10px 20px;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .profile {
+            width: 200px; /* Adjust width as needed */
+            background-color: #ccc; /* Gray background */
+            color: #333;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile img {
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .profile h2 {
+            margin: 0;
+        }
+        .profile p {
+            margin: 5px 0;
+            font-size: 14px; /* Adjust size as needed */
+        }
+        .dashboard-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Add scrollbar for overflow */
+        }
+        .dashboard {
+            padding: 20px;
+        }
+        .dashboard h1 {
+            text-align: center;
+            color: #333;
+        }
+        .case {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #FFC300; /* Yellow Color */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .case h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .case p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .status {
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #ff6347; /* Tomato */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #d32f2f; /* Darker Tomato */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="/dp.jpg.png" alt="Profile Picture">
+            <h2><%= name %></h2>
+            <p>Email: <%= email %></p>
+            <p>Age: <%= age %></p>
+        </div>
+        <div class="dashboard-container">
+            <div class="nav">
+                <a href="/">Home</a>
+            </div>
+            <div class="dashboard">
+                <h1>Dashboard</h1>
+                <% if (cases.length > 0) { %>
+                    <% cases.forEach((caseItem, index) => { %>
+                        <div class="case" id="case<%= index %>">
+                            <button class="delete-btn" onclick="deleteCase(<%= index %>)">Delete</button>
+                            <div class="case-details">
+                                <h2>Case <%= index + 1 %></h2>
+                                <p><strong>Case Number:</strong> <%= caseItem.case_number %></p>
+                                <p><strong>Subject:</strong> <%= caseItem.subject %></p>
+                                <p><strong>Description:</strong> <%= caseItem.description %></p>
+                            </div>
+                            <div class="case-status">
+                                <p><strong>Case Status:</strong> </p>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No cases found for this user.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function deleteCase(index) {
+            fetch(`/deleteCase/${index}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    var caseElement = document.getElementById("case" + index);
+                    caseElement.parentNode.removeChild(caseElement);
+                } else {
+                    console.error('Failed to delete case');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+    
+</body>
+</html>

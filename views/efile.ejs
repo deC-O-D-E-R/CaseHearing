@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Case Filing Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #eaf6ff;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    nav {
+        background-color: #007bff;
+        padding: 5px 0;
+        border-radius: 8px;
+        text-align: center;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    nav a:hover {
+        text-decoration: underline;
+    }
+    label {
+        font-weight: bold;
+        color: #555;
+    }
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    textarea {
+        height: 150px;
+    }
+    input[type="submit"] {
+        background-color: #ff7f50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+        background-color: #ff6347;
+    }
+    .back-link {
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 10px 0;
+    }
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <nav>
+        <a href="/" class="back-link">Back</a>
+    </nav>
+    <h1>Online Case Filing Form</h1>
+    
+    <form action="/filecase" method="POST">
+        <label for="subject_">Subject:</label>
+        <input type="text" id="subject" name="subject_" required>
+    
+        <label for="_age">Age:</label>
+        <input type="text" id="subject" name="age_" required>
+    
+        <label for="description">Case Description:</label>
+        <textarea id="description" name="description_" required></textarea>
+    
+        <input type="submit" value="Submit Case">
+    </form>
+    
+</div>
+
+</body>
+</html>

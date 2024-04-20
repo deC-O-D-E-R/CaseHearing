@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrimeConnect</title>
+    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-tkNYV4iIk3qHhMPVfsG02xKl5viYgAUJLzG7p9XWzc6q43iy1G5wIomYbY1wI0XQZAsJdZng7pFeuD5P/AXK9Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">CrimeConnect</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li id="dashboardLink" style="display: none;"><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/aboutUs">AboutUs</a></li>
+                <button href="/logout" id="logout" style="display: none; background-color: red; font-size: large; border-radius: 6px; padding: 2px; font-weight: bold; font-size: 15px; ">Logout</button> 
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="contain">
+                <h1 class="moving-text">Welcome to Criminal Case Management Portal</h1>
+                <p>"Empowering Clients, Connecting Cases: Your Premier Platform for Streamlined Legal Solutions."</p>
+            </div>
+            <div class="buttons" id="buttns" style="display: block;">
+                <a href="/login-page" class="btn">Login</a>
+                <a href="/register" class="btn">Register</a>
+            </div>
+        </div>
+    </section>
+    
+    <form action="/efile" method="get" style="text-align: center;">
+        <div id="file">
+        <h2 id="fileh2">File a new case</h2>
+        <button style="width: 250px; height: 40px; margin: 10px auto; background-color: #5e99ca; border-radius: 20px; color: white; border: none; box-shadow: 1px 1px 3px black; cursor: pointer;">File a new Case</button>
+        </div>
+        
+    </form>
+    
+    
+    <form action="/search" method="GET" class="search-form">
+        <h2 id="searchh3">Search a case:</h2>
+        <input type="text" name="caseNumber" placeholder="Enter Case Number" class="search-input">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+    
+
+    <div class="main">
+            
+
+        <div class="boxes">
+            <div class="firstTwo">
+
+                <div class="box" id="box1">
+                    <p>32124</p>
+                    Total Cases</div>
+                <div class="box" id="box2">
+                    <p>1234</p>
+                    Decided</div>
+
+            </div>
+            
+            <div class="lastTwo">
+
+
+                <div class="box" id="box3">
+                    <p>1324</p>
+                    Pending</div>
+                <div class="box" id="box4">
+                    <p>400</p>
+                    In trial Queue</div>
+            </div>
+            </div>
+            
+        <div class="resultBox">
+            <div class="result" id="boxA" >
+                <h1>Hire Lawyer</h1>
+                <button class="btn">
+                    <img src="arrow-circle-right.svg" alt="">
+                </button>
+            </div>
+            <div class="result" id="boxB" >
+                
+                <h1>Track Court Cases</h1>
+                <button class="btn">
+                    <img src="arrow-circle-right.svg" alt="">
+                </button>
+            </div>
+            <div class="result" id="boxC" >
+                
+                <h1>Under Trial Cases</h1>
+                <button class="btn">
+                    <img src="arrow-circle-right.svg" alt="">
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>About Us</h3>
+                    <p>We are dedicated to unlocking legal potential and uniting cases. As your central hub for streamlined criminal justice solutions, we strive to empower you every step of the way.</p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fa fa-envelope"></i> www.CrimeConnect.com</li>
+                        <li><i class="fa fa-phone"></i> +1234567890</li>
+                        <li><i class="fa fa-map-marker"></i> 123 Street , New Delhi, India</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2024 CrimeConnect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    
+        
+    
+    
+
+</body>
+
+<script>
+    window.onload = function() {
+        var dashboardLink = document.getElementById('dashboardLink');
+        if (dashboardLink) {
+            dashboardLink.style.display = 'block';
+        }
+        var logout = document.getElementById('logout');
+        if(logout){
+            logout.style.display = 'block';
+        }
+        
+        var file = document.getElementById('file');
+        if(file){
+            file.style.display = 'block';
+        }
+
+    };
+
+    document.getElementById('logout').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            
+            document.getElementById('dashboardLink').style.display = 'none';
+
+            var logout = document.getElementById('logout');
+            if(logout){
+                logout.style.display = 'none';
+            }
+            var btn = document.getElementById('buttns');
+            if(btn){
+                btn.style.display = 'block';
+            }
+            var file = document.getElementById('file');
+            if(file){
+            file.style.display = 'none';
+        }
+    
+        });
+    
+</script>
+
+</html>
