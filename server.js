@@ -16,6 +16,7 @@ app.use(session({
 }));
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -31,14 +32,39 @@ const userSchema = {
 };
 let loggedIn = false;
 const User = mongoose.model("Clients", userSchema);
-
-app.get("/", (req, res) => {
-    res.render("home.ejs", {loggedIn:loggedIn});
+app.get("/", async(req, res) => {
+    const totalCases = await Case.countDocuments();
+    loggedIn = req.session.userLoggedIn;
+    res.render('home', { loggedIn, totalCases})
 });
 
 app.get("/register", (req, res) => {
     res.render("register.ejs");
 });
+
+app.get("/undertrial_cases", async(req, res)=>{
+    const totalCases = await Case.countDocuments();
+    res.render("undertrial.ejs",{totalCases})
+})
+
+app.get("/lawyers",  (req, res) => {
+    res.render("lawyers.ejs");
+})
+
+app.get("/links",(req,res)=>{
+    res.render("links.ejs")
+})
+
+app.get("/data_page",(req,res)=>{
+    res.render("data.ejs");
+})
+
+app.get("/comittee",(req,res)=>{
+    res.render("Comittee.ejs")
+})
+app.get("/category", (req,res)=>{
+    res.render("category.ejs")
+})
 
 app.get("/login-page", (req, res) => {
     res.render("login.ejs");
@@ -90,6 +116,7 @@ app.post("/register", (req,res) => {
 app.post("/login", (req, res) => {
     const login_mail = req.body.loginId;
     const login_pass = req.body.loginPassword;
+    console.log(req.body);
 
     User.findOne({ email: login_mail, password: login_pass })
         .then(user => {
@@ -97,15 +124,14 @@ app.post("/login", (req, res) => {
                 req.session.userLoggedIn = true;
                 Case.find({ email: user.email })
                     .then(caseDetails => {
-                        if (caseDetails.length > 0) {
-                            req.session.user = { email: user.email, name: user.name, age: user.age };
+                        req.session.user = { email: user.email, name: user.name, age: user.age };
                             req.session.cases = caseDetails;
                             loggedIn = true;
+                        if (caseDetails.length > 0) {
                             res.redirect('/dashboard');
                         } else {
                             nodeNotifier.notify('No case filed yet!');
-                            loggedIn = true;
-                            res.status(200).json({message:'Logged In'});
+                            res.redirect('/');
                         }
                     })
                     .catch(error => {
@@ -114,7 +140,7 @@ app.post("/login", (req, res) => {
                     });
             } else {
                 nodeNotifier.notify('Invalid credentials!');
-                res.status(401).json('Not Varified user');
+                res.redirect("/login-page");
             }
         })
         .catch(error => {
@@ -131,7 +157,33 @@ app.get("/dashboard", (req, res) => {
     if (user && cases) {
         res.render('dashboard', { email: user.email, name: user.name, age: user.age, cases: cases });
     } else {
-        res.status(400).send('You have files 0 cases');
+        res.status(400).send(`
+    <div style="
+        padding: 20px; 
+        background-color: #5e99ca;
+        color: white; 
+        border-radius: 10px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        text-align: center; 
+        font-size: 24px;
+        position: relative;
+    ">
+        <a href="/" style="
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        ">Back</a>
+        You have filed 0 cases
+    </div>
+`);
+
     }
 });
 
@@ -142,7 +194,6 @@ app.get("/logout", (req, res) => {
             console.error("Error destroying session:", err);
             res.status(500).send("Internal Server Error");
         } else {
-            loggedIn = false;
             nodeNotifier.notify('Logged Out!');
             res.redirect('/');
         }
@@ -183,11 +234,12 @@ Case.findOne({}, {}, { sort: { 'case_number': -1 } }, function(err, lastCase) {
 
 
 app.post("/filecase", (req, res) => {
-    if (!req.session.user || !req.session.user.email) {
+    if (!req.session.userLoggedIn) {
         nodeNotifier.notify('User is not logged In!');
         res.redirect('/login-page');
     }
 
+    else{
     const userEmail = req.session.user.email;
     const userName = req.session.user.name;
     const userAge = req.session.user.age;
@@ -217,6 +269,9 @@ app.post("/filecase", (req, res) => {
         console.error("Error filing case:", error);
         res.status(500).send("Internal Server Error");
     });
+
+    }
+
 });
 
 
@@ -266,7 +321,33 @@ app.get('/search', async (req, res) => {
             </div>
         `);
         } else {
-            res.send('Case not found');
+            res.send(`
+    <div style="
+        padding: 20px; 
+        background-color: #5e99ca; 
+        color: white; 
+        border-radius: 10px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        text-align: center; 
+        font-size: 24px;
+        position: relative;
+    ">
+        <a href="/" style="
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        padding: 10px 20px;
+        background-color: #333;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    ">Back</a>
+        Case with case no. ${caseNumber} not found
+    </div>
+`   );
+
         }
     } catch (err) {
         console.error('Error searching case:', err);

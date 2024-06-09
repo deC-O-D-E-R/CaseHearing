@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undertrial Cases</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #555;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #3498db;
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        li strong {
+            color: #e74c3c;
+        }
+
+        /* Back button */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">Back</a>
+    <div class="container">
+        <h1><%= Math.round(totalCases * .07) %></h1>
+        <p>Undertrial Cases</p>
+        <hr>
+        <p>Recent Cases:</p>
+        <ul>
+            <li><strong>Case 2:</strong> Robbery</li>
+            <li><strong>Case 5:</strong> Fraud</li>
+            <li><strong>Case 1:</strong> Assault</li>
+            <li><strong>Case 3:</strong> Burglary</li>
+        </ul>
+    </div>
+</body>
+</html>

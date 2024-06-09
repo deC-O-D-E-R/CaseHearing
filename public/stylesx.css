@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  #yearInput {
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  #calendarContainer {
+    margin-top: 20px;
+  }
+  
+  .calendar {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .link{
+    background-color: blue;
+  }

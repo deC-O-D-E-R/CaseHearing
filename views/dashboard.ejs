@@ -9,16 +9,17 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #dfe7ea;
         }
         .container {
             display: flex;
             max-width: 1000px;
-            margin: 20px auto;
+            margin: 80px auto;
             border-radius: 10px;
-            background-color: #fff;
+            background-color: #DFF5FF;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            flex-direction: column;
         }
         .nav {
             background-color: #333;
@@ -33,14 +34,20 @@
             text-decoration: underline;
         }
         .profile {
-            width: 200px; 
-            background-color: #ccc; 
+            width: 200px; /* Adjust width as needed */
+            background-color: #DFF5FF; /* Gray background */
             color: #333;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
+            left: 38%;
+            border-radius: 10%;
+            box-shadow: 0px 2px 4px rgb(121, 115, 115);
+        
+           
         }
         .profile img {
             width: 100px; /* Adjust size as needed */
@@ -64,25 +71,29 @@
         .dashboard {
             padding: 20px;
         }
-        .dashboard h1 {
+        /* .dashboard h1 {
             text-align: center;
             color: #333;
-        }
+        } */
         .case {
             position: relative;
             margin-bottom: 20px;
             padding: 20px;
             border-radius: 10px;
-            background-color: #FFC300; /* Yellow Color */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #DFF5FF; /* Yellow Color */
+            box-shadow: 2px 4px 6px rgb(121, 115, 115);
+            background: linear-gradient(45deg, #DFF5FF, #1DA1F2);
+        }
+        .case:hover{
+            transform: scale(1.01)
         }
         .case h2 {
             margin-top: 0;
-            color: #333;
+            color: #000000;
         }
         .case p {
             margin: 5px 0;
-            color: #666;
+            color: #323334;
         }
         .status {
             font-weight: bold;
@@ -93,19 +104,40 @@
             top: 10px;
             right: 10px;
             padding: 5px 10px;
-            background-color: #ff6347; /* Tomato */
-            color: #fff;
+            background-color: #DFF5FF; /* Tomato */
+            color: #3e3b3b;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         .delete-btn:hover {
-            background-color: #d32f2f; /* Darker Tomato */
+            background-color: #Dff5ff; /* Darker Tomato */
+            transform: scale(1.01);
+        }
+        .navbar {
+         position: absolute;
+        left: 5px;
+         top: 5px;
+        }
+       .navbar a{
+        text-decoration: none;
+       }
+        .title {
+            color: #000000;
+            display: flex;
+            justify-content: space-around;
+        }
+        .title h1::first-letter{
+            color: #1DA1F2;
         }
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <a href="/"><img src="back.png" alt="Back" style="width:42px;height:42px;"></a>
+    </div>
     <div class="container">
+        <div class="title"><h1>Dashboard</h1></div>
         <div class="profile">
             <img src="/dp.jpg.png" alt="Profile Picture">
             <h2><%= name %></h2>
@@ -113,11 +145,7 @@
             <p>Age: <%= age %></p>
         </div>
         <div class="dashboard-container">
-            <div class="nav">
-                <a href="/">Home</a>
-            </div>
             <div class="dashboard">
-                <h1>Dashboard</h1>
                 <% if (cases.length > 0) { %>
                     <% cases.forEach((caseItem, index) => { %>
                         <div class="case" id="case<%= index %>">
@@ -158,6 +186,5 @@
             });
         }
     </script>
-    
 </body>
 </html>

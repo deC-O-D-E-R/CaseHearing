@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -77,6 +80,44 @@ body {
 #logout:hover {
     background-color: #cc0000;
 }
+
+.ticker-container {
+    width: 100%;
+    overflow: hidden;
+    background-color:#DFF5FF;
+    height: 33px;
+    }
+    .ticker-wrapper {
+    width: 100%;
+    padding-left: 100%;
+    background-color: transparent;
+    }
+    @keyframes ticker {
+    0% {
+    transform: translate3d(0, 0, 0);
+    }
+    100% {
+    transform: translate3d(-100%, 0, 0);
+    }
+    }
+    .ticker-transition {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 100%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: ticker;
+    animation-duration: 40s;
+    }
+    .ticker-transition:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+    }
+    .ticker-item {
+    display: inline-block;
+    padding: 0 2rem;
+    margin: 0.5rem;
+    }
 
 .search-form {
     padding-top: 30px;
@@ -169,8 +210,9 @@ body {
 .main {
     width: 100%;
     margin-top: 3px;
-    /* background-color: rgb(227, 227, 205); */
     border-radius: 30px;
+    background-color:#DFF5FF;
+
 }
 
 .boxes {
@@ -183,6 +225,7 @@ body {
 .box {
     margin: 2rem;
     width: 260px;
+    background: linear-gradient(45deg, #DFF5FF, #5aafe4);
     border: 2px solid black;
     display: flex;
     justify-content: center;
@@ -190,7 +233,7 @@ body {
     align-items: end;
     padding: 1rem;
     padding-bottom: 1rem;
-    box-shadow: 3px 3px 3px lightblue;
+    box-shadow: 3px 5px 5px grey;
 }
 
 #box1 {
@@ -246,21 +289,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
     gap: 1rem;
+    box-shadow: 3px 5px 5px grey;
     border-radius: 5px; 
+    padding: 8px 0 8px 0;
+    font-weight:bold;
+    cursor: pointer;
+}
+
+
+a{
+    text-decoration: none;
+    color: #154063;
 }
 
 #boxA {
-    background-color: rgb(234, 72, 72);
+    background-color: rgb(195, 255, 106);
 }
 
 #boxB {
-    background-color: rgb(245, 188, 56);
+    background-color: rgb(195, 255, 106);
 }
 
 #boxC {
-    background-color: rgb(234, 72, 72);
+    background-color: rgb(195, 255, 106);
+}
+
+#boxA:hover{
+    background-color: #fff;
+}
+#boxB:hover{
+    background-color: #fff;
+}
+#boxC:hover{
+    background-color: #fff;
 }
 
 .btn img {
@@ -323,9 +385,14 @@ body {
     padding: 15px 0;
     margin-top: 50px;
 }
-
+.copyright .container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 .copyright p {
     margin: 0;
     color: #fff;
     text-align: center;
 }
+

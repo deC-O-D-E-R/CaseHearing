@@ -3,141 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Document</title>
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+        
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
-        .navbar {
-            width: 100%;
-            background-color: #333; /* Sky blue */
-            padding: 15px 20px;
+        
+        body {
+            background: #f6f5f7;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 20px;
-            padding: 10px 20px;
-            border-radius: 20px;
-            transition: background-color 0.3s;
-        }
-        .navbar a:hover {
-            background-color: black; /* Light Sea Green */
-        }
-        .container {
-            width: 100%;
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
             height: 100vh;
-            background-color: linen;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            margin: -20px 0 50px;
         }
-
-        .sub-con {
-            padding-left: 20px;
-            width: 30%;
-            height: 70%;
-            background-color: #5e99ca;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-            box-shadow: 2px 2px 2px black;
-        }
+        
         h1 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-        .log-email, .log-password {
-            padding: 10px;
             font-weight: bold;
-            font-size: 20px;
+            margin: 0;
         }
-        input {
-            border-radius: 10px;
-            font-size: 20px;
+        
+        h2 {
+            text-align: center;
+        }
+        
+        p {
+            font-size: 14px;
+            font-weight: 100;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+            margin: 20px 0 30px;
+        }
+        
+       
+        
+        a {
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+        
+        button {
+            border-radius: 20px;
+            border: 1px solid #1DA1F2;
+            background-color: #1DA1F2;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             margin-top: 5px;
+        }
+        
+     
+        form {
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            text-align: center;
+        }
+        .form h1::first-letter{
+            color: #1DA1F2;
+        }
+        
+        input {
+            background-color: #eee;
             border: none;
-            padding: 8px 12px;
+            padding: 12px 15px;
+            margin: 8px 0;
             width: 100%;
         }
-        button {
-            margin-left: 10px;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            color: white;
-            background-color: green;
-            border: none;
-            transition: background-color 0.3s;
+        
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+              box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                    0 10px 10px rgba(0,0,0,0.22);
+            position: relative;
+            overflow: hidden;
+            width: 768px;
+            max-width: 100%;
+            min-height: 482px;
         }
-        button:hover {
-            background-color: white;
-            color: black;
+        
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+           
         }
+        
+        .sign-in-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+  
+      
+        
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            
+        }
+        
+        
+        
+        .overlay {
+            background: #1DA1F2;
+            background: -webkit-linear-gradient(to right, #1DA1F2, #1DA1F2);
+            background: linear-gradient(to right, #1DA1F2, #1DA1F2);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            color: #FFFFFF;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            
+        }
+        
+       
+        
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+           
+        }
+        
+       
+        
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+        
+        
+        
+       
 
-    </style>
+        .navbar {
+         position: absolute;
+        left: 5px;
+         top: 5px;
+        }
+       .navbar a{
+        text-decoration: none;
+        }
+        </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="/">Back</a>
+        <a href="/"><img src="back.png" alt="Back" style="width:42px;height:42px;"></a>
     </div>
-    <div class="container">
-        <h1>Login</h1>
-        <div class="sub-con">
-            <form id="loginForm" action="/login" method="post">
-                <div class="log-email">
-                    <label for="email">Email:</label>
-                    <input type="email" name="loginId" id="email">
-                </div>
-                <div class="log-password">
-                    <label for="password">Password:</label>
-                    <input type="password" name="loginPassword" id="password">
-                </div>
-                <div class="login">
-                    <button type="submit" id="loginBtn">Login</button>
-                </div>
+    <div class="container" id="container">
+       
+        <div class="form-container sign-in-container">
+           
+            <form action="/login" method="post" class="form">
+                <h1>Login</h1>
+
+             <input type="email" placeholder="xyz@gmail.com" name="loginId" />
+               
+                <input type="password" placeholder="Password"  name="loginPassword"  />
+          
+                <button>Login</button>
             </form>
         </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                
+                <div class="overlay-panel overlay-right">
+                    <h1>Crime Connect</h1>
+                    <p>A central hub for streamline criminal justice solutions</p>
+                    
+                </div>
+            </div>
+        </div>
     </div>
-
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault(); 
-
-            var formData = new FormData(this);
-
-            fetch("/login", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
-                throw new Error("Network response was not ok.");
-            })
-            .then(data => {
-                // Handle your response here
-                console.log(data); // For example, you can log the response to the console
-            })
-            .catch(error => {
-                console.error("There has been a problem with your fetch operation:", error);
-            });
-        });
-    </script>
+    
+  
 </body>
-
 </html>
